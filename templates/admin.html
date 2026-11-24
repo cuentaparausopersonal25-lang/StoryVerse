@@ -1,96 +1,14 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090817"><title>STORYVERSE — Estudio creativo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-<div class="ambient a1"></div><div class="ambient a2"></div>
-<header class="topbar">
-  <a class="brand" href="#" data-page="home"><span class="brand-mark">S</span><span>STORY<span class="violet">VERSE</span><small>CREATIVE UNIVERSE</small></span></a>
-  <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menú">☰</button>
-  <nav id="mainNav">
-    <button data-page="home" class="nav-link active">Inicio</button><button data-page="projects" class="nav-link">Mis proyectos</button>
-    <button data-page="characters" class="nav-link">Personajes</button><button data-page="draw" class="nav-link">Dibujar</button>
-    <button data-page="stories" class="nav-link">Historias</button><button data-page="comics" class="nav-link">Cómics</button>
-    <button data-page="library" class="nav-link">Biblioteca</button>
-  </nav>
-  <a class="admin-link" href="/admin">Admin ↗</a>
-</header>
-<main>
-<section id="home" class="page active">
-  <div class="hero">
-    <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> TU IMAGINACIÓN, SIN LÍMITES</div>
-      <h1>Las grandes historias<br>empiezan con <span class="gradient-text">una idea.</span></h1>
-      <p>Un estudio creativo para imaginar personajes, construir mundos y convertir tus ideas en historias que merecen ser contadas.</p>
-      <div class="hero-actions"><button class="btn primary" id="newProject">＋ Crear proyecto</button><button class="btn ghost" data-page="draw">✦ Explorar el estudio</button></div>
-      <div class="hero-stats"><div><b>01</b><span>Imaginá</span></div><i></i><div><b>02</b><span>Creá</span></div><i></i><div><b>03</b><span>Contá</span></div></div>
-    </div>
-    <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-core"><span>✧</span><b>SV</b><small>CREATE YOUR WORLD</small></div><div class="float-card fc1">✎ <span>Personajes</span></div><div class="float-card fc2">▤ <span>Historias</span></div><div class="float-card fc3">✦ <span>Universos</span></div></div>
-  </div>
-  <div class="section-head"><div><div class="eyebrow">TU ESPACIO CREATIVO</div><h2>Todo empieza acá.</h2></div><button class="text-button" data-page="projects">Ver proyectos →</button></div>
-  <div class="tool-grid">
-    <button class="tool-card" data-page="characters"><span class="tool-icon purple">♙</span><b>Crear personajes</b><span>Diseñá protagonistas únicos y guardá sus historias.</span><em>Explorar herramienta ↗</em></button>
-    <button class="tool-card" data-page="draw"><span class="tool-icon blue">✎</span><b>Estudio de dibujo</b><span>Dibujá desde cero con un lienzo y herramientas simples.</span><em>Abrir lienzo ↗</em></button>
-    <button class="tool-card" data-page="stories"><span class="tool-icon pink">▤</span><b>Crear historias</b><span>Organizá capítulos, escenas, diálogos y narraciones.</span><em>Escribir ahora ↗</em></button>
-    <button class="tool-card" data-page="comics"><span class="tool-icon cyan">▦</span><b>Editor de cómics</b><span>Armá páginas con viñetas, imágenes y globos.</span><em>Crear página ↗</em></button>
-  </div>
-  <div class="section-head recent-head"><div><div class="eyebrow">SEGUIR CREANDO</div><h2>Proyectos recientes</h2></div><button class="text-button" data-page="projects">Ver todos →</button></div>
-  <div id="recentProjects" class="project-grid"><div class="empty-state">Todavía no hay proyectos. ¡Creá el primero!</div></div>
-  <div class="inspire"><div><div class="eyebrow">UN UNIVERSO DE POSIBILIDADES</div><h2>Tu próxima idea<br>puede cambiarlo todo.</h2><p>Un personaje, un lugar imposible o una frase: cualquier cosa puede ser el comienzo.</p></div><div class="inspire-symbol">✧</div></div>
-</section>
-
-<section id="projects" class="page">
- <div class="page-heading"><div class="eyebrow">TU PRODUCCIÓN</div><h1>Mis proyectos</h1><p>Todas tus ideas, historias y creaciones en un solo lugar.</p></div>
- <div class="toolbar"><div class="tabs"><button class="tab active" data-filter="all">Todos</button><button class="tab" data-filter="personaje">Personajes</button><button class="tab" data-filter="historia">Historias</button><button class="tab" data-filter="comic">Cómics</button></div><button class="btn primary" id="newProject2">＋ Nuevo proyecto</button></div>
- <div id="allProjects" class="project-grid"><div class="empty-state">Cargando proyectos…</div></div>
-</section>
-
-<section id="characters" class="page">
- <div class="page-heading"><div class="eyebrow">DISEÑO DE PERSONAJES</div><h1>Personajes <span class="gradient-text">memorables.</span></h1><p>Creá desde cero, dibujá su apariencia y construí su identidad.</p></div>
- <div class="editor-layout">
-  <div class="panel drawing-panel"><div class="panel-title"><b>Retrato del personaje</b><span class="status-dot">Lienzo</span></div><canvas id="charCanvas" width="720" height="520"></canvas><div class="canvas-tools"><label class="tool-label">Color <input type="color" id="charColor" value="#8b5cf6"></label><label class="tool-label">Pincel <input type="range" id="charSize" min="1" max="36" value="6"></label><button class="small-btn" id="charUndo">↶ Deshacer</button><button class="small-btn" id="charClear">Borrar todo</button><label class="small-btn upload-label">＋ Referencia<input type="file" id="charImage" accept="image/*" hidden></label></div></div>
-  <div class="panel form-panel"><div class="panel-title"><b>Ficha de personaje</b><span class="mini-tag">CREACIÓN</span></div>
-   <label>Nombre<input id="charName" placeholder="Ej. Astra"></label><div class="two-fields"><label>Edad ficticia<input id="charAge" placeholder="Ej. 19"></label><label>Rol<input id="charRole" placeholder="Protagonista"></label></div>
-   <label>Personalidad<textarea id="charPersonality" rows="3" placeholder="¿Cómo piensa y actúa?"></textarea></label>
-   <label>Historia<textarea id="charBio" rows="4" placeholder="¿De dónde viene? ¿Qué desea?"></textarea></label>
-   <label>Características<textarea id="charTraits" rows="2" placeholder="Habilidades, apariencia, poderes…"></textarea></label>
-   <button class="btn primary full" id="saveCharacter">Guardar personaje ↗</button>
-  </div>
- </div>
-</section>
-
-<section id="draw" class="page">
- <div class="page-heading"><div class="eyebrow">STORYVERSE CANVAS</div><h1>Estudio de <span class="gradient-text">dibujo.</span></h1><p>Un lienzo libre para bajar tus ideas a trazos.</p></div>
- <div class="panel draw-workspace"><div class="draw-toolbar">
-  <label class="tool-label">Color <input type="color" id="drawColor" value="#17152a"></label><label class="tool-label">Tamaño <input type="range" id="drawSize" min="1" max="48" value="7"></label>
-  <button class="small-btn active" data-tool="pen">✎ Lápiz</button><button class="small-btn" data-tool="eraser">⌫ Borrador</button><button class="small-btn" id="undoDraw">↶</button><button class="small-btn" id="redoDraw">↷</button><button class="small-btn" id="clearDraw">Limpiar</button><label class="small-btn upload-label">Importar<input type="file" id="drawImport" accept="image/*" hidden></label><button class="small-btn" id="downloadDraw">Descargar PNG ↓</button>
- </div><canvas id="mainCanvas" width="1200" height="700"></canvas><div class="canvas-footer"><span><i class="status-dot"></i> Lienzo listo</span><span>1200 × 700 px · PNG</span></div></div>
-</section>
-
-<section id="stories" class="page">
- <div class="page-heading"><div class="eyebrow">NARRATIVA</div><h1>Construí tu <span class="gradient-text">historia.</span></h1><p>De una idea suelta a un universo narrativo completo.</p></div>
- <div class="story-layout"><div class="panel story-sidebar"><b>Estructura</b><button class="side-action active">▤ Capítulos</button><button class="side-action" id="addChapter">＋ Agregar capítulo</button><div id="chapterList" class="chapter-list"></div></div>
- <div class="panel story-editor"><div class="story-meta"><input id="storyTitle" class="title-input" placeholder="Título de tu historia"><select id="storyType"><option>Novela</option><option>Cuento</option><option>Manga</option><option>Historia ilustrada</option></select></div><input id="chapterTitle" class="chapter-title" placeholder="Capítulo 1 — Un nuevo comienzo"><textarea id="storyText" class="story-writing" placeholder="Todo gran universo comienza con una primera línea…"></textarea><div class="story-bottom"><span id="wordCount">0 palabras</span><button class="btn primary" id="saveStory">Guardar historia ↗</button></div></div></div>
-</section>
-
-<section id="comics" class="page">
- <div class="page-heading"><div class="eyebrow">NARRATIVA VISUAL</div><h1>Editor de <span class="gradient-text">cómics.</span></h1><p>Diseñá páginas, organizá viñetas y contá con imágenes.</p></div>
- <div class="comic-toolbar"><label class="tool-label">Diseño <select id="comicLayout"><option value="2">2 viñetas</option><option value="3" selected>3 viñetas</option><option value="4">4 viñetas</option><option value="6">6 viñetas</option></select></label><button class="small-btn" id="addPanel">＋ Agregar viñeta</button><button class="small-btn" id="comicDownload">Descargar página PNG ↓</button><button class="btn primary" id="saveComic">Guardar cómic ↗</button></div>
- <div id="comicPage" class="comic-page"></div>
-</section>
-
-<section id="library" class="page">
- <div class="page-heading"><div class="eyebrow">REFERENCIAS E IDEAS</div><h1>Tu <span class="gradient-text">biblioteca.</span></h1><p>Un espacio para guardar inspiración y consultar tus creaciones.</p></div>
- <div class="library-grid"><div class="panel"><div class="library-icon">✧</div><h3>Ideas para mundos</h3><p>Una ciudad flotante donde los recuerdos se compran y venden.</p><p>Un bosque que cambia de lugar cada vez que alguien miente.</p><p>Una estación espacial que recibe cartas del futuro.</p></div><div class="panel"><div class="library-icon">♙</div><h3>Ideas para personajes</h3><p>Una cartógrafa que puede dibujar lugares que todavía no existen.</p><p>Un guardián que perdió la memoria de aquello que protege.</p><p>Una inventora que escucha las emociones de los objetos.</p></div><div class="panel"><div class="library-icon">▤</div><h3>Formatos narrativos</h3><p><b>Manga:</b> narración secuencial ilustrada.</p><p><b>Cómic:</b> historias visuales en viñetas.</p><p><b>Novela:</b> desarrollo narrativo extenso.</p><p><b>Cuento:</b> relato breve y concentrado.</p></div></div>
- <div class="panel library-note"><b>Consejo creativo</b><p>Probá combinar una limitación con un deseo: un personaje que puede viajar a cualquier lugar, pero nunca volver al mismo sitio dos veces.</p></div>
-</section>
-</main>
-<footer><a class="brand" href="#"><span class="brand-mark">S</span><span>STORY<span class="violet">VERSE</span></span></a><span>Un universo creado por vos. · v{{ version }}</span><a href="/admin">Administración</a></footer>
-<div id="projectModal" class="modal"><div class="modal-card"><button class="modal-close" id="closeModal">×</button><div class="eyebrow">NUEVA CREACIÓN</div><h2>¿Qué vamos a crear?</h2><label>Nombre del proyecto<input id="newTitle" placeholder="Mi nuevo universo"></label><label>Tipo de proyecto<select id="newKind"><option value="historia">Historia</option><option value="personaje">Personaje</option><option value="comic">Cómic / Manga</option></select></label><button class="btn primary full" id="createProject">Crear proyecto ↗</button></div></div>
-<div id="toast" class="toast"></div>
-<script src="/static/app.js"></script>
-</body></html>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>STORYVERSE · Administración</title><link rel="stylesheet" href="/static/style.css"></head><body class="admin-body">
+<header class="topbar admin-top"><a class="brand" href="/"><span class="brand-mark">S</span><span>STORY<span class="violet">VERSE</span><small>ADMIN STUDIO</small></span></a><button class="small-btn" id="logout">Cerrar sesión</button></header>
+<main class="admin-main"><div class="page-heading"><div class="eyebrow">PANEL PRIVADO · VERSIÓN {{ version }}</div><h1>Centro de <span class="gradient-text">administración.</span></h1><p>Gestioná propuestas y paquetes de actualización de forma controlada.</p></div>
+<div class="admin-grid"><section class="panel"><div class="panel-title"><b>Modo Prompt</b><span class="mini-tag">REVISIÓN MANUAL</span></div><p class="muted">Escribí una instrucción para documentar una mejora. No se ejecutará automáticamente.</p><textarea id="adminPrompt" rows="7" placeholder="Ej.: Agregar una herramienta para organizar paletas de color…"></textarea><button class="btn primary full" id="savePrompt">Guardar propuesta</button><div id="promptFeedback" class="feedback"></div><h3>Propuestas guardadas</h3><div id="promptHistory" class="history-list"></div></section>
+<section class="panel"><div class="panel-title"><b>Paquetes de actualización</b><span class="mini-tag">MÁX. 8 MB</span></div><p class="muted">Subí un ZIP con recursos permitidos. El paquete se valida y queda pendiente; no reemplaza ni ejecuta código del servidor.</p><form id="updateForm"><label class="upload-zone">＋ Seleccionar paquete .ZIP<input type="file" id="updateFile" accept=".zip" required></label><button class="btn primary full">Validar y guardar paquete</button></form><div id="updateFeedback" class="feedback"></div><h3>Historial de paquetes</h3><div id="updateHistory" class="history-list"></div></section></div>
+<div class="panel security-note"><b>Seguridad y aplicación de cambios</b><p>Las propuestas y ZIP se almacenan para revisión. Esta versión inicial no ejecuta prompts ni instala código subido: para aplicar cambios al programa, el propietario debe revisar el contenido y publicar una nueva versión desde GitHub/Render. Se evita así que un archivo desconocido pueda tomar control del sitio.</p></div>
+</main><script>
+async function api(url,opts={}){const r=await fetch(url,opts);const d=await r.json();if(!r.ok)throw Error(d.error||'Error');return d}
+document.getElementById('logout').onclick=async()=>{await api('/admin/logout',{method:'POST'});location.href='/admin'};
+async function load(){try{const [u,p]=await Promise.all([api('/admin/api/updates'),api('/admin/api/prompts')]);document.getElementById('updateHistory').innerHTML=u.length?u.map(x=>`<div class="history-item"><b>#${x.id} · ${x.filename}</b><small>${x.status} · ${x.created_at.slice(0,10)}</small><code>${x.sha256.slice(0,24)}…</code></div>`).join(''):'<p class="muted">Todavía no hay paquetes.</p>';document.getElementById('promptHistory').innerHTML=p.length?p.map(x=>`<div class="history-item"><b>${x.prompt.replaceAll('<','&lt;').slice(0,110)}</b><small>${x.status} · ${x.created_at.slice(0,10)}</small></div>`).join(''):'<p class="muted">Todavía no hay propuestas.</p>'}catch(e){document.getElementById('updateFeedback').textContent=e.message}}
+document.getElementById('savePrompt').onclick=async()=>{try{let d=await api('/admin/api/prompts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:document.getElementById('adminPrompt').value})});document.getElementById('promptFeedback').textContent=d.status;document.getElementById('adminPrompt').value='';load()}catch(e){document.getElementById('promptFeedback').textContent=e.message}};
+document.getElementById('updateForm').onsubmit=async e=>{e.preventDefault();try{let f=document.getElementById('updateFile').files[0];let fd=new FormData();fd.append('file',f);let d=await api('/admin/api/updates',{method:'POST',body:fd});document.getElementById('updateFeedback').textContent=d.message;document.getElementById('updateFile').value='';load()}catch(err){document.getElementById('updateFeedback').textContent=err.message}};
+load();
+</script></body></html>
